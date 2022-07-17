@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC 
+"-//Apache Software Foundation//DTD Struts Configuration 1.3//EN" 
+"http://jakarta.apache.org/struts/dtds/struts-config_1_3.dtd">
+       <struts-config>
+       <form-beans>
+       <form-bean name="user" type="com.stackjava.models.User"/>
+       </form-beans>
+       
+       <action-mappings>
+     
+       <action path="/add-user" type="org.apache.struts.actions.ForwardAction" parameter="/user/addUser.jsp">
+       
+       </action>
+      
+      
+       <action path="/add-user-post" type="com.stackjava.actions.UserAction"  parameter="addUserPost" name="user" validate="true" input="/user/addUser.jsp">	
+       <forward name="success" path="/list-user.html" redirect="true"/>
+       </action>
+       
+       <action path="/edit-user-post" type="com.stackjava.actions.UserAction"  parameter="editUserPost" name="user" validate="true" input="/user/updateUser.jsp">	
+       <forward name="success" path="/list-user.html" redirect="true"/>
+       </action>
+       
+       <action path="/view-user" type="com.stackjava.actions.UserAction"  parameter="viewUser"  >	
+       <forward name="viewUser" path="/user/viewUser.jsp"/>
+       </action>
+    	
+    	<action path="/edit-user" type="com.stackjava.actions.UserAction"  parameter="updateUser"  >	
+       <forward name="updateUser" path="/user/updateUser.jsp"/>
+       </action>
+    	
+    	<action path="/delete-user" type="com.stackjava.actions.UserAction"  parameter="deleteUser"  >	
+       <forward name="success" path="/list-user.html"/>
+       </action>
+    	
+    	<action path="/list-user" type="com.stackjava.actions.UserAction"  parameter="listUser"  >	
+       <forward name="listUser" path="/user/listUser.jsp"/>
+       </action>
+    	
+       </action-mappings>
+      
+       <message-resources parameter="messages"></message-resources>
+       </struts-config>
